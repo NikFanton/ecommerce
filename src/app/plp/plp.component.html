@@ -1,0 +1,41 @@
+<h2 id="page-heading">
+    <span>Product Listing Page</span>
+    <!-- <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-email" [routerLink]="['/email/new']">
+        <span  jhiTranslate="dirversityApp.email.home.createLabel">
+        Create a new product
+        </span>
+    </button> -->
+</h2>
+
+
+<form name="checkoutForm" role="form" novalidate (ngSubmit)="completeOrder()">
+
+    <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+            <tr>
+                <th scope="col"><span>Name</span></th>
+                <th scope="col"><span>Price</span></th>
+                <th scope="col"><span>Quantity</span></th>
+                <th scope="col"><span>Description</span></th>
+                <th scope="col"><span></span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.description}}</td>
+                <td>
+                    <input type="number" class="form-control" id="id" name="id" formControlName="id" onkeypress="validateUnsighedInt(event)" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <button type="submit" id="checkout-entity" class="btn btn-primary">
+            <span>Submit Order</span>
+        </button>
+    </div>
+</form>
