@@ -8,7 +8,7 @@
 </h2>
 
 
-<form name="checkoutForm" role="form" novalidate (ngSubmit)="completeOrder()">
+<form name="checkoutForm" action="/checkout/" role="form" (ngSubmit)="completeOrder()">
 
     <table class="table table-striped" aria-describedby="page-heading">
         <thead>
@@ -27,7 +27,7 @@
                 <td>{{product.quantity}}</td>
                 <td>{{product.description}}</td>
                 <td>
-                    <input type="number" class="form-control" id="id" name="id" formControlName="id" onkeypress="validateUnsighedInt(event)" />
+                    <input type="number" class="form-control" id="{{product.id}}" name="quantity-{{product.id}}" />
                 </td>
             </tr>
         </tbody>

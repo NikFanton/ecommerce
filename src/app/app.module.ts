@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PdpComponent } from './pdp/pdp.component';
 import { PLPComponent } from './plp/plp.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PdpComponent,
-    PLPComponent
+    PLPComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

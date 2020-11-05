@@ -11,7 +11,8 @@ import { SERVER_API_URL } from '../app.constants';
   styleUrls: ['./plp.component.css']
 })
 export class PLPComponent implements OnInit {
-  public resourceUrl = SERVER_API_URL + 'api/products';
+  public productsResourceUrl = SERVER_API_URL + 'api/products';
+  public checkoutResourceUrl = SERVER_API_URL + 'api/checkout';
 
   products: IProduct[] = [];
 
@@ -22,14 +23,14 @@ export class PLPComponent implements OnInit {
   }
 
   loadAll() {
-    this.http.get(this.resourceUrl).toPromise()
+    this.http.get(this.productsResourceUrl).toPromise()
       .then(data => {
-        var unparesedProducts = data['data'];        // console.log(unparesedProducts[0]['ref']['@ref']['id']);
+        var unparesedProducts = data['data'];
 
         for (const key in unparesedProducts) {
           if (unparesedProducts.hasOwnProperty(key)) {
             var product = unparesedProducts[key]['data'];
-            product.id = unparesedProducts[0]['ref']['@ref']['id'];
+            product.id = unparesedProducts[key]['ref']['@ref']['id'];
             this.products.push(product);
           }
         }
@@ -54,7 +55,27 @@ export class PLPComponent implements OnInit {
   }
 
   completeOrder() {
-    this.submitOrder(this.createFromForm());
+    // this.submitOrder(this.createFromForm());
+
+  //   fetch('/', {
+  //     method: 'POST',
+  //     headers: {
+  //         'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //         user: {
+  //             name: "John",
+  //             email: "john@example.com"
+  //         }
+  //     })
+  // });
+
+    console.log("TESTED")
+    this.http.post(this.checkoutResourceUrl, 'TESTED').toPromise()
+      .then(data => {
+
+      });
+
   }
 
   submitOrder(productsIds: number[]) {
