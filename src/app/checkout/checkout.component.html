@@ -1,1 +1,39 @@
-<p>checkout works!</p>
+
+<h3>Order {{orderId}}</h3>
+
+<dl>
+    <dt><span><b>Status:</b></span></dt>
+    <dd>{{data['status']}}</dd>
+
+    <dt><span><b>Products:</b></span></dt>
+    <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+            <tr>
+                <th scope="col"><span>ID</span></th>
+                <th scope="col"><span>Price</span></th>
+                <th scope="col"><span>Quantity</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+                <td>{{product.id}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.quantity}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <dt><span><b>Creation Date:</b></span></dt>
+    <dd>{{data['creationDate']['@ts']}}</dd>
+
+    <dt><span><b>Ship Address:</b></span></dt>
+    <dd><b>street:</b> {{data['shipAddress']['street']}}</dd>
+    <dd><b>city:</b> {{data['shipAddress']['city']}}</dd>
+    <dd><b>state:</b> {{data['shipAddress']['state']}}</dd>
+    <dd><b>zipCode:</b> {{data['shipAddress']['zipCode']}}</dd>
+
+    <dt><span><b>Credit Card:</b></span></dt>
+    <dd><b>network:</b> {{data['creditCard']['network']}}</dd>
+    <dd><b>number:</b> {{data['creditCard']['number']}}</dd>
+</dl>
